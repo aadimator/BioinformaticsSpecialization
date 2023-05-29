@@ -1,4 +1,4 @@
-name: Fall 22 - Export Pluto notebooks & Deploy
+name: Export Pluto notebooks & Deploy
 on:
     push:
         branches:
@@ -50,15 +50,8 @@ jobs:
               with:
                 path: generation_report.html
 
-            - name: 🔀 Move files to output folder
-              run: |
-                mkdir www
-                mv _site www
-                mv extra_outputs/* www
-
             - name: 🚀 Deploy to GitHub Pages
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   BRANCH: publish
-                  FOLDER: www
